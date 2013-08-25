@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/08/2013 06:40:01 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.triunfo.entidades.Tblventa" table="tblventa" catalog="tienda">
+        <id name="secventa" type="java.lang.Integer">
+            <column name="SECVENTA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tblpersonaBySecvendedor" class="com.triunfo.entidades.Tblpersona" fetch="select">
+            <column name="SECVENDEDOR" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblpersonaBySeccliente" class="com.triunfo.entidades.Tblpersona" fetch="select">
+            <column name="SECCLIENTE" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblpuntodeventa" class="com.triunfo.entidades.Tblpuntodeventa" fetch="select">
+            <column name="SECPUNTODEVENTA" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="10" not-null="true" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="OBSERVACION" length="200" />
+        </property>
+        <property name="total" type="java.lang.Long">
+            <column name="TOTAL" precision="10" scale="0" />
+        </property>
+        <property name="totalCantidad" type="java.lang.Integer">
+            <column name="TOTAL_CANTIDAD" />
+        </property>
+        <set name="tbldetalleventas" inverse="true">
+            <key>
+                <column name="SECVENTA" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tbldetalleventa" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tienda?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="com/triunfo/entidades/Tblsexo.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblcompra.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tbldocumento.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblproducto.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblpreciocompra.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblmarca.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tbldepartamento.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblproveedor.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tbltipodocumento.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tbldetallecompra.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblusuario.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblpersona.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblrol.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblventa.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tbltipopersona.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblbarrio.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tbldetalleventa.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblunidad.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblpuntodeventa.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblcategoria.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblmunicipio.hbm.xml"/>
+    <mapping resource="com/triunfo/entidades/Tblpais.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

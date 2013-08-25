@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/08/2013 06:40:01 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.triunfo.entidades.Tblpreciocompra" table="tblpreciocompra" catalog="tienda">
+        <id name="secprecioCompra" type="java.lang.Integer">
+            <column name="SECPRECIO_COMPRA" />
+            <generator class="identity" />
+        </id>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="10" not-null="true" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="PRECIO" precision="50" scale="0" not-null="true" />
+        </property>
+        <set name="tblproductos" inverse="true">
+            <key>
+                <column name="SECPRECIOCOMPRA" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tblproducto" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/08/2013 06:40:01 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.triunfo.entidades.Tblproveedor" table="tblproveedor" catalog="tienda">
+        <id name="secproveedor" type="java.lang.Integer">
+            <column name="SECPROVEEDOR" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tblmunicipio" class="com.triunfo.entidades.Tblmunicipio" fetch="select">
+            <column name="SECMUNICIPIO" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="45" not-null="true" />
+        </property>
+        <property name="nit" type="string">
+            <column name="NIT" length="45" not-null="true" />
+        </property>
+        <set name="tblproductos" inverse="true">
+            <key>
+                <column name="SECPROVEEDOR" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tblproducto" />
+        </set>
+        <set name="tblcompras" inverse="true">
+            <key>
+                <column name="SECPROVEEDOR" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tblcompra" />
+        </set>
+    </class>
+</hibernate-mapping>

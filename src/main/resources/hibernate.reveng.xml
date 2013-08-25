@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="tienda"/>
+  <table-filter match-name="tblcompra"/>
+  <table-filter match-name="tblventa"/>
+  <table-filter match-name="tblproducto"/>
+  <table-filter match-name="tbldocumento"/>
+  <table-filter match-name="TBLPERSONA"/>
+  <table-filter match-name="tblproveedor"/>
+  <table-filter match-name="tblbarrio"/>
+  <table-filter match-name="tbldetallecompra"/>
+  <table-filter match-name="tblpuntodeventa"/>
+  <table-filter match-name="tblpais"/>
+  <table-filter match-name="tblmarca"/>
+  <table-filter match-name="tblunidad"/>
+  <table-filter match-name="tblmunicipio"/>
+  <table-filter match-name="tblrol"/>
+  <table-filter match-name="tblsexo"/>
+  <table-filter match-name="tbldetalleventa"/>
+  <table-filter match-name="tbltipodocumento"/>
+  <table-filter match-name="tbldepartamento"/>
+  <table-filter match-name="tblpreciocompra"/>
+  <table-filter match-name="tbltipopersona"/>
+  <table-filter match-name="tblcategoria"/>
+  <table-filter match-name="tblusuario"/>
+</hibernate-reverse-engineering>

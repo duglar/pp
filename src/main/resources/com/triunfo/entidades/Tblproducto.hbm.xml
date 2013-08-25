@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/08/2013 06:40:01 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.triunfo.entidades.Tblproducto" table="tblproducto" catalog="tienda">
+        <id name="secproducto" type="java.lang.Integer">
+            <column name="SECPRODUCTO" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tblpreciocompra" class="com.triunfo.entidades.Tblpreciocompra" fetch="select">
+            <column name="SECPRECIOCOMPRA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblcategoria" class="com.triunfo.entidades.Tblcategoria" fetch="select">
+            <column name="SECCATEGORIA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblmarca" class="com.triunfo.entidades.Tblmarca" fetch="select">
+            <column name="SECMARCA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblproveedor" class="com.triunfo.entidades.Tblproveedor" fetch="select">
+            <column name="SECPROVEEDOR" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblunidad" class="com.triunfo.entidades.Tblunidad" fetch="select">
+            <column name="SECUNIDAD" not-null="true" />
+        </many-to-one>
+        <property name="nombreProducto" type="string">
+            <column name="NOMBRE_PRODUCTO" length="45" not-null="true" />
+        </property>
+        <property name="codigo" type="int">
+            <column name="CODIGO" not-null="true" />
+        </property>
+        <property name="cantidad" type="int">
+            <column name="CANTIDAD" not-null="true" />
+        </property>
+        <property name="precioventa" type="big_decimal">
+            <column name="PRECIOVENTA" precision="50" scale="0" not-null="true" />
+        </property>
+        <set name="tbldetalleventas" inverse="true">
+            <key>
+                <column name="SECPRODUCTO" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tbldetalleventa" />
+        </set>
+        <set name="tbldetallecompras" inverse="true">
+            <key>
+                <column name="SECPRODUCTO" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tbldetallecompra" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/08/2013 06:40:01 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.triunfo.entidades.Tblcompra" table="tblcompra" catalog="tienda">
+        <id name="seccompra" type="java.lang.Integer">
+            <column name="SECCOMPRA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tblpersona" class="com.triunfo.entidades.Tblpersona" fetch="select">
+            <column name="SECPERSONA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblproveedor" class="com.triunfo.entidades.Tblproveedor" fetch="select">
+            <column name="SECPROVEEDOR" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblpuntodeventa" class="com.triunfo.entidades.Tblpuntodeventa" fetch="select">
+            <column name="SECPUNTODEVENTA" not-null="true" />
+        </many-to-one>
+        <property name="total" type="big_decimal">
+            <column name="TOTAL" precision="50" scale="0" not-null="true" />
+        </property>
+        <property name="totalCantidad" type="big_decimal">
+            <column name="TOTAL_CANTIDAD" precision="50" scale="0" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="200" not-null="true" />
+        </property>
+        <set name="tbldetallecompras" inverse="true">
+            <key>
+                <column name="SECCOMPRA" not-null="true" />
+            </key>
+            <one-to-many class="com.triunfo.entidades.Tbldetallecompra" />
+        </set>
+    </class>
+</hibernate-mapping>
