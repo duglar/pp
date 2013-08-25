@@ -15,7 +15,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author david
+ * @author El autor es Jennifer
  */
 
 @Stateless
