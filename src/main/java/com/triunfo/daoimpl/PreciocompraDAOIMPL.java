@@ -5,12 +5,10 @@
 package com.triunfo.daoimpl;
 
 import com.triunfa.hibernate.HibernateUtil;
-import com.triunfo.dao.CategoriaDAO;
-
-import com.triunfo.entidades.Tblcategoria;
+import com.triunfo.dao.PreciocompraDAO;
+import com.triunfo.entidades.Tblpreciocompra;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -18,25 +16,20 @@ import org.hibernate.Session;
  *
  * @author DUGLAR ZEMANATE
  */
-@Stateless
-public class CategoriaDAOIMPL implements CategoriaDAO {
-     /**
-     *
-     * @param Tblcategoria
-     * @return
-     */
+public class PreciocompraDAOIMPL  implements PreciocompraDAO{
+    
     @Override
-    public Boolean insertarCategoria(Tblcategoria Tblcategoria) {          
+    public Boolean insertarpreciocompra(Tblpreciocompra Tblpreciocompra) {          
         Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.save(Tblcategoria);
+            session.save(Tblpreciocompra);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en insertarcategoria Categoria " + e.getMessage());
+            System.err.println("Error en insertarpreciocompra preciocompra " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -47,17 +40,17 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
         @Override
-    public Boolean actualizarCategoria(Tblcategoria tblcategoria) {
+    public Boolean actualizarpreciocompra(Tblpreciocompra Tblpreciocompra  ) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.update(tblcategoria);
+            session.update(Tblpreciocompra);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en actualizarcategoria categoria " + e.getMessage());
+            System.err.println("Error en actualizarpreciocompra preciocompra " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -67,17 +60,17 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
         @Override
-    public Boolean eliminarCategoria(Tblcategoria tblcategoria) {
+    public Boolean eliminarpreciocompra(Tblpreciocompra Tblpreciocompra) {
              Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.delete(tblcategoria);
+            session.delete(Tblpreciocompra);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en eliminarCategoria Categoria " + e.getMessage());
+            System.err.println("Error en eliminarpreciocompra preciocompra " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -87,28 +80,23 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
       @Override
-    public List<Tblcategoria> buscarCategoria() {
+    public List<Tblpreciocompra> buscarpreciocompra() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Tblcategoria> categorias = new ArrayList<Tblcategoria>();
+        List<Tblpreciocompra> preciocompras = new ArrayList<Tblpreciocompra>();
         try {
-            Query q = session.createQuery("from Tblcategoria");
-           categorias = q.list();
+            Query q = session.createQuery("from Tblpreciocompra");
+           preciocompras = q.list();
         } catch (Exception e) {
-           categorias = null;
-            System.err.println("Error al buscar buscarCaregria: " + e.getMessage());
+            preciocompras = null;
+            System.err.println("Error al buscar buscarpreciocompra: " + e.getMessage());
             session.beginTransaction().rollback();
         } finally {
             session.close();
         }
 
-        return categorias ;
+        return preciocompras;
     
     }
-
-   
-    
-    
-    
     
     
 }

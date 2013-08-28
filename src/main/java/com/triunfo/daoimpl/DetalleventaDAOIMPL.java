@@ -5,12 +5,10 @@
 package com.triunfo.daoimpl;
 
 import com.triunfa.hibernate.HibernateUtil;
-import com.triunfo.dao.CategoriaDAO;
-
-import com.triunfo.entidades.Tblcategoria;
+import com.triunfo.entidades.Tbldetalleventa;
+import com.triunfo.dao.DetalleventaDAO;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -18,25 +16,19 @@ import org.hibernate.Session;
  *
  * @author DUGLAR ZEMANATE
  */
-@Stateless
-public class CategoriaDAOIMPL implements CategoriaDAO {
-     /**
-     *
-     * @param Tblcategoria
-     * @return
-     */
+public class DetalleventaDAOIMPL  implements DetalleventaDAO{
     @Override
-    public Boolean insertarCategoria(Tblcategoria Tblcategoria) {          
+    public Boolean insertardetalleventa(Tbldetalleventa Tbldetalleventa) {          
         Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.save(Tblcategoria);
+            session.save(Tbldetalleventa);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en insertarcategoria Categoria " + e.getMessage());
+            System.err.println("Error en insertardatalleventa detalleventa " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -47,17 +39,17 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
         @Override
-    public Boolean actualizarCategoria(Tblcategoria tblcategoria) {
+    public Boolean actualizardetalleventa(Tbldetalleventa  Tbldetalleventa) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.update(tblcategoria);
+            session.update(Tbldetalleventa);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en actualizarcategoria categoria " + e.getMessage());
+            System.err.println("Error en actualizardetalleventa detalleventa " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -67,17 +59,17 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
         @Override
-    public Boolean eliminarCategoria(Tblcategoria tblcategoria) {
+    public Boolean eliminardetalleventa(Tbldetalleventa Tbldetalleventa) {
              Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.delete(tblcategoria);
+            session.delete(Tbldetalleventa);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en eliminarCategoria Categoria " + e.getMessage());
+            System.err.println("Error en eliminarTbldetalleventa   detalleventa " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -87,28 +79,24 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
       @Override
-    public List<Tblcategoria> buscarCategoria() {
+    public List<Tbldetalleventa> buscardetalleventa() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Tblcategoria> categorias = new ArrayList<Tblcategoria>();
+        List<Tbldetalleventa> detalleventas = new ArrayList<Tbldetalleventa>();
         try {
-            Query q = session.createQuery("from Tblcategoria");
-           categorias = q.list();
+            Query q = session.createQuery("from Tbldetalleventas");
+            detalleventas = q.list();
         } catch (Exception e) {
-           categorias = null;
-            System.err.println("Error al buscar buscarCaregria: " + e.getMessage());
+            detalleventas = null;
+            System.err.println("Error al buscar buscardetalleventas: " + e.getMessage());
             session.beginTransaction().rollback();
         } finally {
             session.close();
         }
 
-        return categorias ;
+        return detalleventas;
     
     }
 
-   
-    
-    
-    
     
     
 }

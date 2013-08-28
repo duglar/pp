@@ -5,12 +5,10 @@
 package com.triunfo.daoimpl;
 
 import com.triunfa.hibernate.HibernateUtil;
-import com.triunfo.dao.CategoriaDAO;
-
-import com.triunfo.entidades.Tblcategoria;
+import com.triunfo.entidades.Tblpuntodeventa;
+import com.triunfo.dao.PuntodeventaDAO;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -18,25 +16,20 @@ import org.hibernate.Session;
  *
  * @author DUGLAR ZEMANATE
  */
-@Stateless
-public class CategoriaDAOIMPL implements CategoriaDAO {
-     /**
-     *
-     * @param Tblcategoria
-     * @return
-     */
-    @Override
-    public Boolean insertarCategoria(Tblcategoria Tblcategoria) {          
+public class PuntodeventaDAOIMPL  implements PuntodeventaDAO{
+    
+     @Override
+    public Boolean insertarPuntodeventa(Tblpuntodeventa Tblpuntodeventa) {          
         Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.save(Tblcategoria);
+            session.save(Tblpuntodeventa);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en insertarcategoria Categoria " + e.getMessage());
+            System.err.println("Error en insertarpuntodeventa puntodeventa " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -47,17 +40,17 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
         @Override
-    public Boolean actualizarCategoria(Tblcategoria tblcategoria) {
+    public Boolean actualizarPuntodeventa(Tblpuntodeventa Tblpuntodeventa  ) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.update(tblcategoria);
+            session.update(Tblpuntodeventa);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en actualizarcategoria categoria " + e.getMessage());
+            System.err.println("Error en actualizarpuntodeventa puntodeventa " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -67,17 +60,17 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
         @Override
-    public Boolean eliminarCategoria(Tblcategoria tblcategoria) {
+    public Boolean eliminarPuntodeventa(Tblpuntodeventa Tblpuntodeventa ) {
              Session session = HibernateUtil.getSessionFactory().openSession();
         boolean resultado = false;        
         try {
             session.beginTransaction();          
-            session.delete(tblcategoria);
+            session.delete(Tblpuntodeventa);
             session.flush();
             session.beginTransaction().commit();
             resultado = true;
         } catch (Exception e) {
-            System.err.println("Error en eliminarCategoria Categoria " + e.getMessage());
+            System.err.println("Error en eliminarpuntodeventa puntodeventa " + e.getMessage());
             session.beginTransaction().rollback();
             resultado = false;
         } finally {
@@ -87,28 +80,23 @@ public class CategoriaDAOIMPL implements CategoriaDAO {
     }
 
       @Override
-    public List<Tblcategoria> buscarCategoria() {
+    public List<Tblpuntodeventa>  buscarPuntodeventa() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Tblcategoria> categorias = new ArrayList<Tblcategoria>();
+        List<Tblpuntodeventa> puntosdeventa = new ArrayList<Tblpuntodeventa>();
         try {
-            Query q = session.createQuery("from Tblcategoria");
-           categorias = q.list();
+            Query q = session.createQuery("from Tblpuntodeventa");
+           puntosdeventa= q.list();
         } catch (Exception e) {
-           categorias = null;
-            System.err.println("Error al buscar buscarCaregria: " + e.getMessage());
+            puntosdeventa= null;
+            System.err.println("Error al buscar buscarpunodeventa: " + e.getMessage());
             session.beginTransaction().rollback();
         } finally {
             session.close();
         }
 
-        return categorias ;
+        return puntosdeventa;
     
     }
-
-   
-    
-    
-    
-    
+      
     
 }
