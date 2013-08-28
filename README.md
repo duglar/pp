@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Triunfo
 =======
 
@@ -12,3 +13,9 @@ Se construye las dependencias
 Se corre el script adjunto en este proyecto
 
 y se desplega con servidor web glassfiss 3.1.2
+=======
+prueba
+======
+
+primera parte
+>>>>>>> branch 'master' of https://github.com/duglar/prueba.git
